@@ -69,7 +69,7 @@ router.post("/login", function(req, res, next) {
       }
     });
 });
-
+// ............................call profile..............................................
 router.get("/profile", function(req, res, next) {
   let token = req.cookies.jwt;
   if (token) {
@@ -94,6 +94,8 @@ router.get("/profile", function(req, res, next) {
     res.send("Must be logged in");
   }
 });
+
+// ............................Logout..............................................
 
 router.get("/logout", function(req, res, next) {
   res.cookie("jwt", "", { expires: new Date(0) });
