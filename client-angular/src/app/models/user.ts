@@ -4,7 +4,7 @@ export class User {
   LastName:string;
   Username:string;
   Email:string;            
-  complete: boolean;
+
 }
 
       
