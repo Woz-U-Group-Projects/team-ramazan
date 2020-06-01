@@ -8,6 +8,8 @@ import { User } from "../models/user";
   styleUrls: ["./profile-display.component.css"]
 })
 export class ProfileDisplayComponent implements OnInit {
+
+  
   constructor(private userService: UserService) {}
 
   users: User[];
