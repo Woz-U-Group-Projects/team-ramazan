@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileDisplayComponent } from './profile-display/profile-display.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+
 
 
 const routes: Routes = [
 
-  {path: "", redirectTo:"profile", pathMatch: "full"},
+
   {path: "profile", component: ProfileDisplayComponent},
   {path: "login", component: LoginComponent},
+  {path: "signup", component: SignupComponent},
 ];
 
 @NgModule({

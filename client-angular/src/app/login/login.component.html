@@ -1,16 +1,18 @@
-
-<div class="LoginPage">
-    <h2>Login</h2>
-    <div class="loginInput1">
-    Username: <input [(ngModel)]="Username.Username">
-    <br/>
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 mt-5 mx-auto">
+        <form (submit)="login()">
+          <h1 class="h3 mb-3 font-weight-normal">Please Login</h1>
+          <div class="form-group">
+            <label for="userName">Username</label>
+            <input type="userName" class="form-control" name="userName" placeholder="Enter Username" >
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-lg btn-primary btn-block">login</button>
+        </form>
+      </div>
     </div>
-    <div class="loginInput2">
-    Password : <input [(ngModel)]="Password.Password">
-    <br/>
-    </div>
-    
-    <button type="button"(click)="Login()"  >submit</button>
-    
-    </div>
-    
+  </div>

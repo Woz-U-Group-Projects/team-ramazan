@@ -15,11 +15,15 @@ export class UserService {
 
   // Express will use port 3000
   apiUrl: string = "http://localhost:3000/users/profile";
+  
 
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl);
-  }
 
+  }
+  loginUser(user): Observable<User> {
+    return this.http.post<User>(this.apiUrl, user);
+  }
 }
