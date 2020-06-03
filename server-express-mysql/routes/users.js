@@ -1,10 +1,9 @@
 var express = require("express");
 var router = express.Router();
-var models = require("../models"); //<--- Add models
-var authService = require("../services/auth"); //<--- Add authentication service
+var models = require("../models"); 
+var authService = require("../services/auth"); 
 
-/* ..........................................GET users.........................................  */
-router.get("/", function(req, res, next) {
+/* GET users  */
 router.get("/", function(req, res, next) {
   res.send("respond with a resource");
 });
@@ -13,7 +12,7 @@ router.get("/signup", function(req, res, next) {
   res.render("signup");
 });
 
-// ............................Create new user if one doesn't exist.................................*/
+// Create new user if one doesn't exist//
 router.post("/signup", function(req, res, next) {
   models.users
     .findOrCreate({
@@ -24,7 +23,7 @@ router.post("/signup", function(req, res, next) {
         FirstName: req.body.firstName,
         LastName: req.body.lastName,
         Email: req.body.email,
-        Password: authService.hashPassword(req.body.password) //<--- Change to this code here
+        Password: authService.hashPassword(req.body.password) 
       }
     })
     .spread(function(result, created) {
@@ -40,7 +39,7 @@ router.get("/login", function(req, res, next) {
   res.render("login");
 });
 
-// .............................Login user and return JWT..............................................
+// Login user and return JWT as cookie//
 router.post("/login", function(req, res, next) {
   models.users
     .findOne({
@@ -70,7 +69,7 @@ router.post("/login", function(req, res, next) {
       }
     });
 });
-// ............................call profile..............................................
+/* GET profile */
 router.get("/profile", function(req, res, next) {
   let token = req.cookies.jwt;
   if (token) {
@@ -95,7 +94,7 @@ router.get("/profile", function(req, res, next) {
     res.send("Must be logged in");
   }
 });
-// ............................Logout..............................................
+// Logout/
 router.get("/logout", function(req, res, next) {
   res.cookie("jwt", "", { expires: new Date(0) });
   res.redirect("login");
