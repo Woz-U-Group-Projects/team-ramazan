@@ -3,7 +3,8 @@ var router = express.Router();
 var models = require("../models"); //<--- Add models
 var authService = require("../services/auth"); //<--- Add authentication service
 
-/* GET users listing. */
+/* ..........................................GET users.........................................  */
+router.get("/", function(req, res, next) {
 router.get("/", function(req, res, next) {
   res.send("respond with a resource");
 });
@@ -12,7 +13,7 @@ router.get("/signup", function(req, res, next) {
   res.render("signup");
 });
 
-// Create new user if one doesn't exist
+// ............................Create new user if one doesn't exist.................................*/
 router.post("/signup", function(req, res, next) {
   models.users
     .findOrCreate({
@@ -39,7 +40,7 @@ router.get("/login", function(req, res, next) {
   res.render("login");
 });
 
-// Login user and return JWT as cookie
+// .............................Login user and return JWT..............................................
 router.post("/login", function(req, res, next) {
   models.users
     .findOne({
@@ -69,7 +70,7 @@ router.post("/login", function(req, res, next) {
       }
     });
 });
-
+// ............................call profile..............................................
 router.get("/profile", function(req, res, next) {
   let token = req.cookies.jwt;
   if (token) {
@@ -94,7 +95,7 @@ router.get("/profile", function(req, res, next) {
     res.send("Must be logged in");
   }
 });
-
+// ............................Logout..............................................
 router.get("/logout", function(req, res, next) {
   res.cookie("jwt", "", { expires: new Date(0) });
   res.redirect("login");
