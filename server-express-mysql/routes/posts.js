@@ -29,7 +29,8 @@ router.get("/:id", function(req, res, next) {
   let postId = parseInt(req.params.id);
   models.posts.findOne({ where: { PostId: postId }, raw: true }).then(post => {
     console.log(post);
-    res.render("editPost", post);
+    res.send(JSON.stringify(post))
+   // res.render("editPost", post);
   });
 });
 

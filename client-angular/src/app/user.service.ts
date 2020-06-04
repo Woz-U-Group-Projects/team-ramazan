@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from "@angular/core"
 import { HttpClient } from "@angular/common/http"
 import { User } from "./models/user";
 import { Observable } from "rxjs";
@@ -23,6 +23,7 @@ export class UserService {
     return this.http.get<User[]>(this.apiUrl);
 
   }
+
   loginUser(user): Observable<User> {
     return this.http.post<User>(this.apiUrl, user);
   }
