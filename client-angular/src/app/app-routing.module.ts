@@ -7,8 +7,8 @@ import { SignupComponent } from './signup/signup.component';
 
 
 
-const routes: Routes = [
 
+const routes: Routes = [
 
   {path: "profile", component: ProfileDisplayComponent},
   {path: "login", component: LoginComponent},
