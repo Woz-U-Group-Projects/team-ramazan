@@ -61,8 +61,9 @@ router.post("/login", function(req, res, next) {
         if (passwordMatch) {
           let token = authService.signUser(user);
           res.cookie("jwt", token);
-          res.send(JSON.stringify(post))
-          //res.redirect("profile");
+          //res.send(JSON.stringify(post))
+          //res.redirect("/profile");
+          res.json({jwt:token})
         } else {
           console.log("Wrong password");
           res.send("Wrong password");
@@ -83,7 +84,8 @@ router.get("/profile", function(req, res, next) {
           })
           .then(result => {
             console.log(result);
-            res.render("profile", { user: result[0] });
+            res.json(result)
+            
           });
       } else {
         res.status(401);

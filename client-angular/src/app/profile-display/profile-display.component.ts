@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { UserService } from "../user.service";
-import { User } from "../models/user";
+import { UserPostService } from "../userpost.service";
+import { Users } from "../userpost";
 
 @Component({
   selector: "app-profile-display",
@@ -10,12 +10,12 @@ import { User } from "../models/user";
 export class ProfileDisplayComponent implements OnInit {
 
   
-  constructor(private userService: UserService) {}
+  constructor(private userpostService: UserPostService) {}
 
-  users: User[];
+  users: Users[];
 
   getUsers() {
-    this.userService.getUsers().subscribe(users => (this.users = users));
+    this.userpostService.getUsers().subscribe(users => (this.users = users));
   }
 
 

@@ -1,4 +1,4 @@
-export class User {
+export class Users {
   UserId: string;
   FirstName: string;
   LastName:string;
@@ -6,6 +6,15 @@ export class User {
   Password:String;    
   Email:string;
        
+
+}
+
+
+export class Posts {
+  PostId: number;
+  PostTitle: string;
+  PostBody:string;
+ 
 
 }
 

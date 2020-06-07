@@ -12,7 +12,11 @@ router.get("/", function(req, res, next) {
           .findAll({
             where: { UserId: user.UserId, Deleted: false }
           })
-          .then(result => res.render("posts", { posts: result }));
+          .then(result => {  
+          console.log(result)
+          res.json(result)
+        });
+   
      
       } else {
         res.status(401);
@@ -47,7 +51,8 @@ router.post("/", function(req, res, next) {
               PostBody: req.body.postBody
             }
           })
-          .spread((result, created) => res.redirect("/posts"));
+          .spread((result, created) =>  res.json())
+        
       } else {
         res.status(401);
         res.send("Invalid authentication token");
@@ -65,11 +70,13 @@ router.delete("/:id", function(req, res, next) {
     .update(
       { Deleted: true },
       {
-        where: { PostId: postId }
+       where: { PostId: postId }
       }
     )
-    .then(result => res.redirect("/"));
+    .then(result => res.status(200).send("deleted"));
 });
+
+
 
 router.put("/:id", function(req, res, next) {
   let postId = parseInt(req.params.id);
@@ -77,7 +84,8 @@ router.put("/:id", function(req, res, next) {
   console.log(postId);
   models.posts
     .update(req.body, { where: { PostId: postId } })
-    .then(result => res.redirect("/"));
+    .then(result =>  res.json())
+    
 });
 
 module.exports = router;

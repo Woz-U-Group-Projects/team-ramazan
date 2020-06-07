@@ -11,7 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [AppComponent, ProfileDisplayComponent, NavComponent, LoginComponent, SignupComponent, ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule,],
   providers: [],
   bootstrap: [AppComponent]
 })
