@@ -26,12 +26,12 @@ export class UserPostService {
 
   loginUser(user): Observable<Users> {
     
-    return this.http.post<any>(this.apiUrl, user)
+    return this.http.post<Users>(this.apiUrl, user)
     .pipe(
       // Log the result or error
         //data => this.log(filename, data),
         
-        console.log
+        //console.log()
        // error => this.logError(filename, error)
       
     );

@@ -18,8 +18,9 @@ export class ProfileDisplayComponent implements OnInit {
     this.userpostService.getUsers().subscribe(users => (this.users = users));
   }
 
+ 
 
   ngOnInit() {
-    this.getUsers();
+   
   }
 }

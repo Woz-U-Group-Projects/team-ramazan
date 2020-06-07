@@ -34,7 +34,7 @@ router.get("/:id", function(req, res, next) {
   models.posts.findOne({ where: { PostId: postId }, raw: true }).then(post => {
     console.log(post);
     res.send(JSON.stringify(post))
-   // res.render("editPost", post);
+ 
   });
 });
 
@@ -84,7 +84,7 @@ router.put("/:id", function(req, res, next) {
   console.log(postId);
   models.posts
     .update(req.body, { where: { PostId: postId } })
-    .then(result =>  res.json())
+    .then(result => res.status(200).send("Post Update"));
     
 });
 

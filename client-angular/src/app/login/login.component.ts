@@ -10,23 +10,25 @@ export class LoginComponent implements OnInit {
 
   user;
   pass;
-  
 
   constructor(private userpostService: UserPostService) { }
+  
   login(data) {
     this.loginUser({
-      username:this.user,
-      password:this.pass
+      username: this.user,
+      password: this.pass
 
     })
-   
-    
     console.log(this.user)
     console.log(this.pass)
   }
-  loginUser(user) {
-    this.userpostService.loginUser(user)
+
+  loginUser(users) {
+    this.userpostService.loginUser(users)
   }
+
+
+
   ngOnInit() {
 
   }
