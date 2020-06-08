@@ -8,9 +8,11 @@ import { ProfileDisplayComponent } from "./profile-display/profile-display.compo
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { PostAddComponent } from './post-add/post-add.component';
+import { PostEditComponent } from './post-edit/post-edit.component';
 
 @NgModule({
-  declarations: [AppComponent, ProfileDisplayComponent, NavComponent, LoginComponent, SignupComponent, ],
+  declarations: [AppComponent, ProfileDisplayComponent, NavComponent, LoginComponent, SignupComponent, PostAddComponent, PostEditComponent, ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule,],
   providers: [],
   bootstrap: [AppComponent]
