@@ -15,6 +15,10 @@ app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
 
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  next();
+});
 
 //view engine;setup
 //app.set("views", path.join(__dirname, "views"));
