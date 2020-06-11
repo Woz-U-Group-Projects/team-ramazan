@@ -104,6 +104,10 @@ router.get("/profile", function(req, res, next) {
 // Logout/
 
 
+router.get("/logout", function(req, res, next) {
+  res.cookie("jwt", "", { expires: new Date(0) });
+  res.status(200).send("loged out");
+});
 
 
 
