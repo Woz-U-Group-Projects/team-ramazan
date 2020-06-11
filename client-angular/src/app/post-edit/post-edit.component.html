@@ -5,12 +5,12 @@
       <h3 class="text-center">EDIT POST</h3>
       <div class="addtitle">
         <label for="posttitle">Title</label>
-        <input type="title" class="form-control" name="title" placeholder="Enter Title"[(ngModel)]="editPost .postTitle" >
+        <input type="title" class="form-control" name="title" placeholder="Enter Title"[(ngModel)]="editPost.postTitle" >
       </div>
       
       <div class="addbody">
         <label for="postBody">Body</label>
-        <textarea class="form-control" id="postBody" rows="3" placeholder="Enter Body" [(ngModel)]="editPost .postBody"></textarea>
+        <textarea class="form-control" id="postBody" rows="3" placeholder="Enter Body" [(ngModel)]="editPost.postBody"></textarea>
       </div>
       <button type="button" class="btn btn-lg btn-primary btn-block" (click)="savePost()">SAVE CHANGES</button>
 

@@ -9,7 +9,8 @@ router.get("/", function(req, res, next) {
 });
 
 router.get("/signup", function(req, res, next) {
-  res.render("signup");
+ 
+  res.send("respond with a resource");
 });
 
 // Create new user if one doesn't exist//
@@ -36,7 +37,8 @@ router.post("/signup", function(req, res, next) {
 });
 
 router.get("/login", function(req, res, next) {
-  res.render("login");
+  
+  res.send("respond with a resource");
 });
 
 // Login user and return JWT as cookie//
@@ -96,6 +98,9 @@ router.get("/profile", function(req, res, next) {
     res.send("Must be logged in");
   }
 });
+
+
+
 // Logout/
 
 

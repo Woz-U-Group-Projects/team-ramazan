@@ -20,10 +20,6 @@ export class ProfileDisplayComponent implements OnInit {
     this.userpostService.deletePost(PostId).subscribe(t=> this.getPosts());
   }
 
-
-
-  constructor(private userpostService: UserPostService) {}
-
   users: Users[];
 
   getUsers() {
@@ -31,10 +27,12 @@ export class ProfileDisplayComponent implements OnInit {
   }
 
  
+  constructor(private userpostService: UserPostService) {}
 
   ngOnInit() {
 
     this.getPosts();
+  
    
   }
 }

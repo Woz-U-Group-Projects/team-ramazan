@@ -24,6 +24,8 @@ export class PostAddComponent implements OnInit {
   constructor(private userpostService: UserPostService, private router : Router) { }
 
   ngOnInit() {
+    this.addPost();
+  
   }
 
 }

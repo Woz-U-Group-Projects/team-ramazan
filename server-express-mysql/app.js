@@ -9,11 +9,31 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var postsRouter = require("./routes/posts");
 
+
+
+
 var app = express();
+
+
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
+
+//app.use(function (req, res, next) {
+  //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  //next();
+//});
+
+app.use((req,res,next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200"); 
+  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
+  res.setHeader("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS");
+  next();
+  })
+
+
 
 
 //view engine;setup
@@ -44,7 +64,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.send("error");
 });
 
 

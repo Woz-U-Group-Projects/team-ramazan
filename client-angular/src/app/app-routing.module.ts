@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "signup", component: SignupComponent},
   {path: "post", component: PostAddComponent},
-  {path: "post/edit/:id" , component:PostEditComponent}
+  {path: "post/edit/:PostId" , component:PostEditComponent}
 ];
 
 @NgModule({

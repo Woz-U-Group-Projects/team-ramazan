@@ -4,13 +4,13 @@ var models = require("../models");
 var authService = require("../services/auth"); 
 
 router.get("/", function(req, res, next) {
-  let token = req.cookies.jwt;
-  if (token) {
-    authService.verifyUser(token).then(user => {
-      if (user) {
-        models.posts
+  // let token = req.cookies.jwt;
+  // if (token) {
+  //   authService.verifyUser(token).then(user => {
+  //     if (user) {
+       models.posts
           .findAll({
-            where: { UserId: user.UserId, Deleted: false }
+            where: { UserId: 4 , Deleted: false }
           })
           .then(result => {  
           console.log(result)
@@ -18,15 +18,15 @@ router.get("/", function(req, res, next) {
         });
    
      
-      } else {
-        res.status(401);
-        res.send("Invalid authentication token");
-      }
-    });
-  } else {
-    res.status(401);
-    res.send("Must be logged in");
-  }
+  //     } else {
+  //       res.status(401);
+  //       res.send("Invalid authentication token");
+  //     }
+  //   });
+  // } else {
+  //   res.status(401);
+  //   res.send("Must be logged in");
+  // }
 });
 
 router.get("/:id", function(req, res, next) {

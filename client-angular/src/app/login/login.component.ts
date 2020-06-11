@@ -8,8 +8,8 @@ import { UserPostService } from '../userpost.service';
 })
 export class LoginComponent implements OnInit {
 
-  user;
-  pass;
+  user: " ";
+  pass: " ";
 
   constructor(private userpostService: UserPostService) { }
   
