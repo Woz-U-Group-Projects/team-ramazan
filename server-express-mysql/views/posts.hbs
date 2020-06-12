@@ -5,20 +5,36 @@
   }
 </script>
 
-<h3>New Post</h3>
+
+
+
 <form id="makePost" name="makePost" method="POST" action="/posts/">
-  <div>
-    <label for="postTitle">Title: </label>
-    <input type="text" name="postTitle" required>
+
+
+  <div class="col-md-6 mt-5 mx-auto">
+    <h3>New Post</h3>
+
+    <div>
+      <label for="postTitle">Title</label>
+      <input type="title" class="form-control" name="postTitle" placeholder="Enter Title">
+    </div>
+
+    <div>
+      <label for="postBody">Body</label>
+      <textarea class="form-control" name="postBody" rows="3" placeholder="Enter Body"></textarea>
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-lg btn-primary btn-block">SUBMIT</button>
+    </div>
+
   </div>
-  <div>
-    <label for="postBody">Body: </label>
-    <input type="text" name="postBody" required>
-  </div>
-  <div>
-    <button type="submit">Submit</button>
-  </div>
+
+
 </form>
+
+
+
 
 <hr />
 <h3>Posts</h3>
@@ -26,6 +42,6 @@
 {{#each posts}}
 <h3>
   {{ PostTitle }} : {{ PostBody }} <button onClick="deletePost({{PostId}})">delete</button> <a
-    href="posts/{{PostId}}">Edit</a>
+    href="posts/{{PostId}}"><button>Edit</button></a>
 </h3>
 {{/ each}}

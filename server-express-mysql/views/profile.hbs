@@ -1,10 +1,50 @@
-<h1>Hello {{user.FirstName}} {{user.LastName}}</h1>
-<h2>Email: {{user.Email}}</h2>
-<h3>Username: {{user.Username}}</h3>
-<hr />
-<h2>Posts</h2>
-{{#each user.posts}}
-<h3>
-  {{PostTitle}} : {{PostBody}}
-</h3>
-{{/each}}
+<div class="container">
+  <div class="jumbotron mt-5">
+    <div class="col-sm-8 mx-auto">
+      <h3 class="text-center">Wellcome</h3>
+    </div>
+
+
+
+
+    <h1>{{user.FirstName}} {{user.LastName}}</h1>
+
+
+
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="jumbotron mt-5">
+    <div class="col-sm-8 mx-auto">
+      <h3 class="text-center">Notes</h3>
+    </div>
+    <div class="all">
+
+      <ul>
+
+
+
+        {{#each user.posts}}
+
+        <h3>Title :</h3>
+        <P>{{PostTitle}}</p>
+
+
+        <h3>Body :</h3>
+        <p>{{PostBody}}</p>
+        <hr />
+
+        {{/each}}
+
+
+
+
+
+
+      </ul>
+    </div>
+
+  </div>
+</div>

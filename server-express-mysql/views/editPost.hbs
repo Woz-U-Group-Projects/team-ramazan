@@ -13,16 +13,26 @@
   }
 </script>
 
+<form>
+  <div class="col-md-6 mt-5 mx-auto">
 
-<div>
-  <label for="postTitle">Title: </label>
-  <input type="text" id="postTitle" name="postTitle" required value={{PostTitle}}>
+    <div>
+      <label for="postTitle">Title: </label>
+      <input type="text" class="form-control" id="postTitle" name="postTitle" required value={{PostTitle}}>
 
-</div>
-<div>
-  <label for="postBody">Body: </label>
-  <input type="text" id="postBody" name="postBody" required value={{PostBody}}>
-</div>
-<div>
-  <button type="submit" onClick="updatePost({{PostId}})">Submit</button>
-</div>
+    </div>
+
+    <div>
+      <label for="postBody">Body: </label>
+       <textarea class="form-control" type="text" id="postBody" name="postBody" rows="3" required value={{PostBody}}></textarea>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-lg btn-primary btn-block" onClick="updatePost({{PostId}})">Submit</button>
+    </div>
+
+  </div>
+</form>
+
+<form>
+
+
