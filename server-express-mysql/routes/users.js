@@ -12,7 +12,7 @@ router.get("/signup", function(req, res, next) {
   res.render("signup");
 });
 
-// Create new user if one doesn't exist
+// Create new user if one doesn't exist//
 router.post("/signup", function(req, res, next) {
   models.users
     .findOrCreate({
@@ -39,7 +39,7 @@ router.get("/login", function(req, res, next) {
   res.render("login");
 });
 
-// Login user and return JWT as cookie
+// Login user and return JWT as cookie//
 router.post("/login", function(req, res, next) {
   models.users
     .findOne({
