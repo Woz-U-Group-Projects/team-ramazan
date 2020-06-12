@@ -12,7 +12,7 @@
 
 
   <div class="col-md-6 mt-5 mx-auto">
-    <h3>New Post</h3>
+    <h3>New Notes</h3>
 
     <div>
       <label for="postTitle">Title</label>
@@ -37,11 +37,15 @@
 
 
 <hr />
-<h3>Posts</h3>
+<h3>Notes</h3>
 
 {{#each posts}}
-<h3>
-  {{ PostTitle }} : {{ PostBody }} <button onClick="deletePost({{PostId}})">delete</button> <a
-    href="posts/{{PostId}}"><button>Edit</button></a>
-</h3>
+<h5>
+  Title :{{ PostTitle }} Body : {{ PostBody }} <button onClick="deletePost({{PostId}})">Delete</button> 
+
+  <a href="posts/{{PostId}}"><button>Edit</button></a>
+
+
+</h5>
+<hr />
 {{/ each}}

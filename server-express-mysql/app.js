@@ -11,6 +11,11 @@ var postsRouter = require("./routes/posts");
 
 var app = express();
 
+
+
+app.use(express.static("images"));
+
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
