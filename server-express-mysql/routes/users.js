@@ -1,19 +1,18 @@
 var express = require("express");
 var router = express.Router();
-var models = require("../models"); 
-var authService = require("../services/auth"); 
+var models = require("../models"); //<--- Add models
+var authService = require("../services/auth"); //<--- Add authentication service
 
-/* GET users  */
+/* GET users listing. */
 router.get("/", function(req, res, next) {
   res.send("respond with a resource");
 });
 
 router.get("/signup", function(req, res, next) {
- 
-  res.send("respond with a resource");
+  res.render("signup");
 });
 
-// Create new user if one doesn't exist//
+// Create new user if one doesn't exist
 router.post("/signup", function(req, res, next) {
   models.users
     .findOrCreate({
@@ -24,7 +23,7 @@ router.post("/signup", function(req, res, next) {
         FirstName: req.body.firstName,
         LastName: req.body.lastName,
         Email: req.body.email,
-        Password: authService.hashPassword(req.body.password) 
+        Password: authService.hashPassword(req.body.password) //<--- Change to this code here
       }
     })
     .spread(function(result, created) {
@@ -37,11 +36,10 @@ router.post("/signup", function(req, res, next) {
 });
 
 router.get("/login", function(req, res, next) {
-  
-  res.send("respond with a resource");
+  res.render("login");
 });
 
-// Login user and return JWT as cookie//
+// Login user and return JWT as cookie
 router.post("/login", function(req, res, next) {
   models.users
     .findOne({
@@ -63,8 +61,7 @@ router.post("/login", function(req, res, next) {
         if (passwordMatch) {
           let token = authService.signUser(user);
           res.cookie("jwt", token);
-      
-          res.json({jwt:token})
+          res.redirect("profile");
         } else {
           console.log("Wrong password");
           res.send("Wrong password");
@@ -72,7 +69,7 @@ router.post("/login", function(req, res, next) {
       }
     });
 });
-/* GET profile */
+
 router.get("/profile", function(req, res, next) {
   let token = req.cookies.jwt;
   if (token) {
@@ -85,8 +82,7 @@ router.get("/profile", function(req, res, next) {
           })
           .then(result => {
             console.log(result);
-            res.json(result)
-            
+            res.render("profile", { user: result[0] });
           });
       } else {
         res.status(401);
@@ -99,15 +95,12 @@ router.get("/profile", function(req, res, next) {
   }
 });
 
-
-
-// Logout/
-
-
 router.get("/logout", function(req, res, next) {
   res.cookie("jwt", "", { expires: new Date(0) });
-  res.status(200).send("loged out");
+  res.redirect("login");
 });
+
+
 
 
 

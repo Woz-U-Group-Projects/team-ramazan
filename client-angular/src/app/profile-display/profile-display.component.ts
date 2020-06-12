@@ -32,6 +32,7 @@ export class ProfileDisplayComponent implements OnInit {
   ngOnInit() {
 
     this.getPosts();
+    this.getUsers();
   
    
   }

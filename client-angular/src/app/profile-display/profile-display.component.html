@@ -4,9 +4,12 @@
       <h3 class="text-center">Wellcome</h3>
     </div>
 
+    <ul>
 
-    <h6>Name</h6>
-
+      <li *ngFor="let user of users">
+        <h1>Hello {{user.FirstName}} {{user.LastName}}</h1>
+      </li>
+    </ul>
 
   </div>
 

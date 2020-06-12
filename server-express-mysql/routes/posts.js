@@ -1,40 +1,37 @@
 var express = require("express");
 var router = express.Router();
-var models = require("../models"); 
-var authService = require("../services/auth"); 
+var models = require("../models"); //<--- Add models
+var authService = require("../services/auth"); //<--- Add authentication service
 
 router.get("/", function(req, res, next) {
-  // let token = req.cookies.jwt;
-  // if (token) {
-  //   authService.verifyUser(token).then(user => {
-  //     if (user) {
-       models.posts
+  let token = req.cookies.jwt;
+  if (token) {
+    authService.verifyUser(token).then(user => {
+      if (user) {
+        models.posts
           .findAll({
-            where: { UserId: 4 , Deleted: false }
+            where: { UserId: user.UserId, Deleted: false }
           })
-          .then(result => {  
-          console.log(result)
-          res.json(result)
-        });
-   
-     
-  //     } else {
-  //       res.status(401);
-  //       res.send("Invalid authentication token");
-  //     }
-  //   });
-  // } else {
-  //   res.status(401);
-  //   res.send("Must be logged in");
-  // }
+          .then(result => res.render("posts", { posts: result }));
+        //console.log(user.posts);
+        //res.render("posts", { posts: user.posts });
+        //res.send(JSON.stringify(user));
+      } else {
+        res.status(401);
+        res.send("Invalid authentication token");
+      }
+    });
+  } else {
+    res.status(401);
+    res.send("Must be logged in");
+  }
 });
 
 router.get("/:id", function(req, res, next) {
   let postId = parseInt(req.params.id);
   models.posts.findOne({ where: { PostId: postId }, raw: true }).then(post => {
     console.log(post);
-    res.send(JSON.stringify(post))
- 
+    res.render("editPost", post);
   });
 });
 
@@ -51,8 +48,7 @@ router.post("/", function(req, res, next) {
               PostBody: req.body.postBody
             }
           })
-          .spread((result, created) =>  res.json())
-        
+          .spread((result, created) => res.redirect("/posts"));
       } else {
         res.status(401);
         res.send("Invalid authentication token");
@@ -70,13 +66,11 @@ router.delete("/:id", function(req, res, next) {
     .update(
       { Deleted: true },
       {
-       where: { PostId: postId }
+        where: { PostId: postId }
       }
     )
-    .then(result => res.status(200).send("deleted"));
+    .then(result => res.redirect("/"));
 });
-
-
 
 router.put("/:id", function(req, res, next) {
   let postId = parseInt(req.params.id);
@@ -84,8 +78,7 @@ router.put("/:id", function(req, res, next) {
   console.log(postId);
   models.posts
     .update(req.body, { where: { PostId: postId } })
-    .then(result => res.status(200).send("Post Update"));
-    
+    .then(result => res.redirect("/"));
 });
 
 module.exports = router;
