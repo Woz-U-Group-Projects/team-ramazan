@@ -36,16 +36,41 @@
 
 
 
-<hr />
-<h3>Notes</h3>
-
-{{#each posts}}
-<h5>
-  Title :{{ PostTitle }} Body : {{ PostBody }} <button onClick="deletePost({{PostId}})">Delete</button> 
-
-  <a href="posts/{{PostId}}"><button>Edit</button></a>
 
 
-</h5>
-<hr />
-{{/ each}}
+
+<div class="container">
+  <div class="jumbotron mt-5">
+    <div class="col-sm-8 mx-auto">
+      <h3 class="text-center">Notes</h3>
+    </div>
+    <div class="all">
+
+      <ul>
+
+
+        <hr />
+        <h3>Notes</h3>
+
+        {{#each posts}}
+        <h6>
+          Title :{{ PostTitle }}<br> Body : {{ PostBody }}
+          <button type="button" class="btn btn-danger " style="font-size: x-small"
+            onClick="deletePost({{PostId}})">Delete</button>
+
+          <a href="posts/{{PostId}}"><button type="button" class="btn btn-warning"
+              style="font-size: x-small">Edit</button></a>
+
+
+        </h6>
+        <hr />
+        {{/ each}}
+
+
+
+
+      </ul>
+    </div>
+
+  </div>
+</div>

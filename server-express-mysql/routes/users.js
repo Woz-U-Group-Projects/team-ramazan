@@ -39,7 +39,7 @@ router.get("/login", function(req, res, next) {
   res.render("login");
 });
 
-// Login user and return JWT as cookie//
+// Login user and return JWT //
 router.post("/login", function(req, res, next) {
   models.users
     .findOne({
