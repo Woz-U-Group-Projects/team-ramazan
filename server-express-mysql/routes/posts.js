@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
-var models = require("../models"); //<--- Add models
-var authService = require("../services/auth"); //<--- Add authentication service
+var models = require("../models"); 
+var authService = require("../services/auth"); 
 
 router.get("/", function(req, res, next) {
   let token = req.cookies.jwt;
@@ -14,7 +14,7 @@ router.get("/", function(req, res, next) {
           })
           .then(result => res.render("posts", { posts: result }));
         //console.log(user.posts);
-        //res.render("posts", { posts: user.posts });
+  
         //res.send(JSON.stringify(user));
       } else {
         res.status(401);

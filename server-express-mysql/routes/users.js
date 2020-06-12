@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
-var models = require("../models"); //<--- Add models
-var authService = require("../services/auth"); //<--- Add authentication service
+var models = require("../models"); 
+var authService = require("../services/auth"); 
 
-/* GET users listing. */
+/* GET users  */
 router.get("/", function(req, res, next) {
   res.send("respond with a resource");
 });
@@ -23,7 +23,7 @@ router.post("/signup", function(req, res, next) {
         FirstName: req.body.firstName,
         LastName: req.body.lastName,
         Email: req.body.email,
-        Password: authService.hashPassword(req.body.password) //<--- Change to this code here
+        Password: authService.hashPassword(req.body.password) 
       }
     })
     .spread(function(result, created) {
